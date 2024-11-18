@@ -72,5 +72,5 @@ For those working in ui5 and CAP we would like to refer to the following sources
 - [Get started in-a-nutshell](https://cap.cloud.sap/docs/get-started/in-a-nutshell)
 - [CAP with Typescript](https://cap.cloud.sap/docs/node.js/typescript)
 - [UI5 API](https://ui5.sap.com/#/api)
-- [UI5 V4 guide](https://sapui5.hana.ondemand.com/sdk/#/topic/bcdbde6911bd4fc68fd435cf8e306ed0)
+- [UI5 ODATA V4 guide](https://sapui5.hana.ondemand.com/sdk/#/topic/bcdbde6911bd4fc68fd435cf8e306ed0)
 - [Setup for VSCode](https://community.sap.com/t5/technology-blogs-by-members/how-to-set-up-visual-studio-code-for-cap-development/ba-p/13477590)
