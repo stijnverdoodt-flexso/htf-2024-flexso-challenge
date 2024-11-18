@@ -1,0 +1,40 @@
+{
+  "name": "mission108",
+  "version": "1.0.0",
+  "description": "An intergalactic exploration cockpit",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds": "^8",
+    "express": "^4",
+    "git": "^0.1.5"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds": "^8",
+    "@sap/cds-dk": "^8.4.1",
+    "@sapui5/types": "^1.130.0",
+    "cds-plugin-ui5": "^0.9.3",
+    "ts-node": "^10.9.2"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      }
+    }
+  },
+  "scripts": {
+    "start": "cds-ts serve",
+    "watch-frontend": "cds watch --open flexso.htf.frontend.frontend/index.html?sap-ui-xx-viewCache=false --livereload false --port 5000",
+    "cds-ts:watch": "cds-ts watch"
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  }
+}

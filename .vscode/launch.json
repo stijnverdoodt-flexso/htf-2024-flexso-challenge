@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+  {
+    "command": "npm start",
+    "name": "Run npm start",
+    "request": "launch",
+    "type": "node-terminal"
+  },
+    {
+      "name": "cds serve",
+      "request": "launch",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "cds-ts",
+      "args": [
+        "serve",
+        "--with-mocks",
+        "--in-memory?",
+        "--port",
+        "5000"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}

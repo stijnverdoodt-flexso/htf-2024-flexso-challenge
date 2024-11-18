@@ -1,0 +1,42 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    controllerName="flexso.htf.frontend.frontend.controller.Master"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+>
+    <f:DynamicPage
+        id="_IDGenDynamicPage"
+        title="Mission 108"
+    >
+        <f:title>
+            <f:DynamicPageTitle id="id.DynamicPageTitle">
+                <f:heading>
+                    <Title
+                        id="id.DynamicPageTitleText"
+                        text="Exploration Cockpit"
+                    />
+                </f:heading>
+
+                <f:expandedContent>
+                    <Label
+                        id="id.DynamicPageTitleSubText"
+                        text="Plan your next exploration mission"
+                    />
+                </f:expandedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader id="id.DynamicPageHeader">
+                <f:content>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

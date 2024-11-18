@@ -1,0 +1,125 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "flexso.htf.frontend.frontend",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.1",
+      "toolsId": "bbdb336e-294d-4c72-b75e-2294a495c103"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/exploration/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.129.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "flexso.htf.frontend.frontend.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "flexso.htf.frontend.frontend.view",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "fcl"
+      },
+      "routes": [
+        {
+          "name": "RouteMaster",
+          "pattern": ":?query:",
+          "target": ["TargetMaster"]
+        },
+        {
+          "name": "Detail",
+          "pattern": "{GalaxyId}/{layout}",
+          "target": ["TargetMaster", "Detail"]
+        }
+      ],
+      "targets": {
+        "TargetMaster": {
+          "viewId": "Master",
+          "viewName": "Master",
+          "level": 2,
+          "controlAggregation": "beginColumnPages"
+        },
+        "Detail": {
+          "level": 2,
+          "viewId": "Detail",
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "flexso.htf.frontend.frontend.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
