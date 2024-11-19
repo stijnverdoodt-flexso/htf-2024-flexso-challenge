@@ -1,13 +1,22 @@
 import Controller from "sap/ui/core/mvc/Controller";
-import formatter from "../model/formatter";
-
 
 /**
  * @namespace flexso.htf.frontend.frontend.controller
  */
 export default class Master extends Controller {
-  public formatter = formatter;
+    public onInit(): void {
+        this._calculateDrakeValue("<GALAXY_ID>");
+    }
 
-  /*eslint-disable @typescript-eslint/no-empty-function*/
-  public onInit(): void {}
+    private async _calculateDrakeValue(galaxyId: string): Promise<void> {
+        try {
+            const response = await fetch(`/drake-service/calculateDrakeValue?galaxyId=${galaxyId}`);
+            const drakeValue = await response.json();
+
+            console.log(`Drake Value for Galaxy ${galaxyId}:`, drakeValue);
+            // Update model or UI based on result
+        } catch (error) {
+            console.error("Error calculating Drake Value:", error);
+        }
+    }
 }
