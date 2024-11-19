@@ -29,14 +29,99 @@
                 </f:expandedContent>
             </f:DynamicPageTitle>
         </f:title>
-
         <f:header>
             <f:DynamicPageHeader id="id.DynamicPageHeader">
                 <f:content>
+                    <filterbar:FilterBar
+                        id="id.DynamicPageHeaderFilterBar"
+                        useToolbar="false"
+                        search=".onSearch"
+                        showClearOnFB="true"
+                        clear=".clearFilters"
+                    >
+                        <filterbar:filterGroupItems>
+                            <filterbar:FilterGroupItem
+                                id="id.SearchFilterGroupItem"
+                                name="name"
+                                groupName="Group1"
+                                label="Galaxy Search"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <SearchField id="id.SearchField" />
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                id="id.AlienStatusFilterGroupItem"
+                                name="alienCivilisationStatus"
+                                groupName="Group1"
+                                label="Alien status"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        id="id.AlienStatusComboBox"
+                                        showClearIcon="true"
+                                        items="{
+                                                    path: '/KnownAlienStatus',
+                                                    sorter: { 
+                                                        path: 'name',
+                                                        descending: false
+                                                    }
+                                                }"
+                                    >
+                                        <core:Item
+                                            id="id.AlienStatusItem"
+                                            key="{ID}"
+                                            text="{name}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                        </filterbar:filterGroupItems>
+                    </filterbar:FilterBar>
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
+            <Panel
+                id="idHrmSystemsPane"
+                width="auto"
+                height="100%"
+                class="sapUiResponsiveMargin"
+                accessibleRole="Region"
+                backgroundDesign="Transparent"
+                content="{
+                    path: '/KnownGalaxies',
+                    sorter: { 
+                        path: 'distance',
+                        descending: false
+                    }
+
+                }"
+            >
+                <GenericTile
+                    id="_IDGenGenericTile1"
+                    class="sapUiResponsiveMargin tileLayout"
+                    header="{name}"
+                    press="pressPlanet"
+                >
+                    <TileContent
+                        id="_IDGenGenericTileContent1"
+                        footer="{
+                            path: 'distance',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            formatter: '.formatter.formatDistance'
+                        }"
+                    >
+                        <ImageContent
+                            id="_IDGenImageContent"
+                            src="sap-icon://globe"
+                        />
+                    </TileContent>
+                </GenericTile>
+            </Panel>
         </f:content>
     </f:DynamicPage>
 </mvc:View>
