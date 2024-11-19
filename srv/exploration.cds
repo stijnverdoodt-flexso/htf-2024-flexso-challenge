@@ -36,6 +36,8 @@ service ExplorationService {
 
 define view DetailedGalaxiesView 
     as select from datamodel.Galaxies as Galaxies
+    join datamodel.HabitableZones as HabitableZones
+        on Galaxies.mostCommonStarType.ID = HabitableZones.starType.ID
     {
         key ID,
             name,
@@ -43,12 +45,13 @@ define view DetailedGalaxiesView
             numberOfSolarSystems,
             averagePlanetsPerSolar,
             numberOfSolarSystems * averagePlanetsPerSolar as numberOfPlanets : Double,
-            case
-                when $self.numberOfPlanets > 100000000000  THEN 1
-                else 0.66
-            end as baseDrakeScore : Integer,
             explorationReport,
             mostCommonStarType,
             mostCommonPlanetType,
-            mostLikelyAlienType
+            mostLikelyAlienType,
+            case
+                when $self.numberOfPlanets > 100000000000  THEN 1
+                else 0.66
+            end as baseDrakeScore,
+            HabitableZones.percentage    as starHabitabilityScore   : datamodel.Percentage,
     };
