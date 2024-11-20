@@ -74,3 +74,7 @@ For those working in ui5 and CAP we would like to refer to the following sources
 - [UI5 API](https://ui5.sap.com/#/api)
 - [UI5 ODATA V4 guide](https://sapui5.hana.ondemand.com/sdk/#/topic/bcdbde6911bd4fc68fd435cf8e306ed0)
 - [Setup for VSCode](https://community.sap.com/t5/technology-blogs-by-members/how-to-set-up-visual-studio-code-for-cap-development/ba-p/13477590)
+
+## Running the final version
+During the Hackaton the participants could make calls to an external server (as definied in the .env file), since this external server won't be available forever, the code of the external server has also been provided at /external-server. 
+Whether you want to run this locally or deployed, you will have to change the url to target the new location.
