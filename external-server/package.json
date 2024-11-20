@@ -1,0 +1,44 @@
+{
+  "name": "explorers",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds": "^8",
+    "@sap/xssec": "^4",
+    "express": "^4",
+    "npm-run-all": "^4.1.5",
+    "sqlite3": "^5.1.7",
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@sap/cds-dk": "^8",
+    "@types/validator": "^13.12.2"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db.sqlite"
+        }
+      },
+      "auth": {
+        "[production]": {
+          "kind": "dummy"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "start:dev": "cds-ts serve",
+    "deploy": "run-s build deploy:cf",
+    "build": "mbt build -t gen --mtar mta.tar",
+    "deploy:cf": "cf deploy gen/mta.tar"
+  }
+}

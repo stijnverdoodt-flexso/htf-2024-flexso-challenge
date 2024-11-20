@@ -29,6 +29,7 @@
                 </f:expandedContent>
             </f:DynamicPageTitle>
         </f:title>
+
         <f:header>
             <f:DynamicPageHeader id="id.DynamicPageHeader">
                 <f:content>
@@ -37,7 +38,7 @@
                         useToolbar="false"
                         search=".onSearch"
                         showClearOnFB="true"
-                        clear=".clearFilters"
+                        clear="clearFilters"
                     >
                         <filterbar:filterGroupItems>
                             <filterbar:FilterGroupItem
@@ -49,6 +50,90 @@
                             >
                                 <filterbar:control>
                                     <SearchField id="id.SearchField" />
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                id="id.PlanetTypeFilterGroupItem"
+                                name="mostCommonPlanetType_ID"
+                                groupName="Group1"
+                                label="Planet type"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        id="id.PlanetTypeComboBox"
+                                        showClearIcon="true"
+                                        items="{
+                                                    path: '/KnownPlanetTypes',
+                                                    sorter: { 
+                                                        path: 'name',
+                                                        descending: false
+                                                    }
+                                                }"
+                                    >
+                                        <core:Item
+                                            id="id.PlanetTypeItem"
+                                            key="{ID}"
+                                            text="{name}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                id="id.StarTypeFilterGroupItem"
+                                name="mostCommonStarType_ID"
+                                groupName="Group1"
+                                label="Star type"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        id="id.StarTypeComboBox"
+                                        showClearIcon="true"
+                                        items="{
+                                                    path: '/KnownStarTypes',
+                                                    sorter: { 
+                                                        path: 'name',
+                                                        descending: false
+                                                    }
+                                                }"
+                                    >
+                                        <core:Item
+                                            id="id.StarTypeItem"
+                                            key="{ID}"
+                                            text="{name}"
+                                        />
+                                    </MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+
+                            <filterbar:FilterGroupItem
+                                id="id.AlienTypeFilterGroupItem"
+                                name="mostLikelyAlienType_ID"
+                                groupName="Group1"
+                                label="Alien type"
+                                visibleInFilterBar="true"
+                            >
+                                <filterbar:control>
+                                    <MultiComboBox
+                                        id="id.AlienTypeComboBox"
+                                        showClearIcon="true"
+                                        items="{
+                                                    path: '/KnownAlienTypes',
+                                                    sorter: { 
+                                                        path: 'name',
+                                                        descending: false
+                                                    }
+                                                }"
+                                    >
+                                        <core:Item
+                                            id="id.AlienTypeItem"
+                                            key="{ID}"
+                                            text="{name}"
+                                        />
+                                    </MultiComboBox>
                                 </filterbar:control>
                             </filterbar:FilterGroupItem>
 
@@ -95,8 +180,8 @@
                 content="{
                     path: '/KnownGalaxies',
                     sorter: { 
-                        path: 'distance',
-                        descending: false
+                        path: 'drakeEquation',
+                        descending: true
                     }
 
                 }"
@@ -105,6 +190,10 @@
                     id="_IDGenGenericTile1"
                     class="sapUiResponsiveMargin tileLayout"
                     header="{name}"
+                    subheader="{
+                        path: 'drakeEquation',
+                        formatter: '.formatter.formatDrakeEquation'
+                    }"
                     press="pressPlanet"
                 >
                     <TileContent

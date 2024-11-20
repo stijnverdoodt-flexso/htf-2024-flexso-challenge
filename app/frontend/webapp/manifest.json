@@ -96,7 +96,7 @@
         },
         {
           "name": "Detail",
-          "pattern": "{GalaxyId}/{layout}",
+          "pattern": "{PlanetId}/{layout}",
           "target": ["TargetMaster", "Detail"]
         }
       ],
